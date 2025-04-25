@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/azure-functions/node:3.0-node14-core-tools as builder
+FROM mcr.microsoft.com/azure-functions/node:3.0-node14-core-tools@sha256:f412c321668efe2900e013b292d5dd61cbfd22bbb7af4feaf55341f0a4f757f8 as builder
 
 COPY . /home/node
 
@@ -12,7 +12,7 @@ RUN yarn predeploy
 
 RUN dotnet build -o bin
 
-FROM mcr.microsoft.com/azure-functions/node:3.8.1-node14-slim
+FROM mcr.microsoft.com/azure-functions/node:3.8.1-node14-slim@sha256:dec7ed3ab2f19c13e4be0999a0e9c6240771e42bf9b796beb4b5add2e441c32f
 # FROM mcr.microsoft.com/azure-functions/node:3.8.0
 
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
